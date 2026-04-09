@@ -85,7 +85,10 @@ export default function QuizView({ onComplete, onCancel }: QuizViewProps) {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      const totalScore = Object.values(answers).reduce((acc, curr) => acc + curr, 0);
+      let totalScore = 0;
+      for (const key in answers) {
+        totalScore += answers[key];
+      }
       onComplete(totalScore);
     }
   };
