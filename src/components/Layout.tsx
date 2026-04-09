@@ -56,43 +56,44 @@ export default function Layout({
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/80 backdrop-blur-md border-t border-slate-100 px-8 py-3 flex justify-between items-center z-20">
-        <button 
-          onClick={() => onTabChange('home')}
-          className={cn(
-            "flex flex-col items-center gap-1 transition-colors",
-            activeTab === 'home' ? "text-brand-purple" : "text-slate-400"
-          )}
+      <nav
+          className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/80 backdrop-blur-md border-t border-slate-100 px-8 py-3 flex justify-between items-center z-20">
+        <button
+            onClick={() => onTabChange('home')}
+            className={cn(
+                "flex flex-col items-center gap-1 transition-colors",
+                activeTab === 'home' ? "text-brand-purple" : "text-slate-400"
+            )}
         >
-          <Home className="w-6 h-6" />
+          <Home className="w-6 h-6"/>
           <span className="text-[10px] font-medium">Home</span>
         </button>
 
-        <button 
-          onClick={() => onTabChange('para-voce')}
-          className={cn(
-            "flex flex-col items-center gap-1 transition-colors",
-            activeTab === 'para-voce' ? "text-brand-purple" : "text-slate-400"
-          )}
-        >
-          <Heart className="w-6 h-6" />
-          <span className="text-[10px] font-medium">Para Você</span>
-        </button>
-
-        <button 
-          onClick={() => onTabChange('sos')}
-          className={cn(
-            "flex flex-col items-center gap-1 transition-colors",
-            activeTab === 'sos' ? "text-brand-purple" : "text-slate-400"
-          )}
+        <button
+            onClick={() => onTabChange('sos')}
+            className={cn(
+                "flex flex-col items-center gap-1 transition-colors",
+                activeTab === 'sos' ? "text-brand-purple" : "text-slate-400"
+            )}
         >
           <div className={cn(
-            "p-3 rounded-full -mt-8 shadow-lg transition-all",
-            activeTab === 'sos' ? "bg-brand-purple text-white scale-110" : "bg-slate-100 text-slate-500"
+              "p-3 rounded-full -mt-8 shadow-lg transition-all",
+              activeTab === 'sos' ? "bg-brand-purple text-white scale-110" : "bg-slate-100 text-slate-500"
           )}>
-            <MapPin className="w-6 h-6" />
+            <MapPin className="w-6 h-6"/>
           </div>
           <span className="text-[10px] font-medium mt-1">SOS Mulher</span>
+        </button>
+
+        <button
+            onClick={() => onTabChange('para-voce')}
+            className={cn(
+                "flex flex-col items-center gap-1 transition-colors",
+                activeTab === 'para-voce' ? "text-brand-purple" : "text-slate-400"
+            )}
+        >
+          <Heart className="w-6 h-6"/>
+          <span className="text-[10px] font-medium">Para Você</span>
         </button>
       </nav>
     </div>

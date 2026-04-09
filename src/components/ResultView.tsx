@@ -122,7 +122,7 @@ export default function ResultView({ score, onReset, onViewContacts }: ResultVie
             onClick={onViewContacts}
             className="w-full bg-brand-purple text-white font-bold py-4 rounded-2xl shadow-md flex items-center justify-center gap-2 active:scale-95 transition-all text-sm"
           >
-            <PhoneCall className="w-4 h-4" /> Ver Canais de Apoio
+            <PhoneCall className="w-4 h-4" /> Entender mais
           </button>
           
           <div className="grid grid-cols-2 gap-3">
@@ -133,7 +133,7 @@ export default function ResultView({ score, onReset, onViewContacts }: ResultVie
               <RefreshCcw className="w-4 h-4" /> Refazer
             </button>
             <button className="bg-slate-200/50 text-slate-600 font-bold py-3 rounded-2xl flex items-center justify-center gap-2 text-xs">
-              <Save className="w-4 h-4" /> Salvar
+              <Save className="w-4 h-4" /> Compartilhar
             </button>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Play, ChevronRight, MessageCircle, Video } from 'lucide-react';
+import { Play, ChevronRight, MessageCircle, Video, Users } from 'lucide-react';
 
 interface HomeViewProps {
   onStartQuiz: () => void;
@@ -75,7 +75,7 @@ export default function HomeView({ onStartQuiz, onViewJuliana }: HomeViewProps) 
               <Video className="w-5 h-5 text-brand-purple" />
             </div>
             <h4 className="font-bold text-sm text-slate-800 leading-tight">Acompanhe o conteúdo para descobrir se está em um relacionamento tóxico</h4>
-            <p className="text-[10px] text-slate-500">Psicólogas explicam os comportamentos sutis que definem a toxicidade.</p>
+            <p className="text-[10px] text-slate-500">Este conteúdo te ajuda a entender o que está acontecendo e como sair disso com mais segurança.</p>
           </motion.div>
 
           <motion.div 
@@ -86,21 +86,26 @@ export default function HomeView({ onStartQuiz, onViewJuliana }: HomeViewProps) 
               <MessageCircle className="w-5 h-5 text-green-600" />
             </div>
             <h4 className="font-bold text-sm text-slate-800">Chat Anônimo</h4>
-            <p className="text-[10px] text-slate-500">Converse em tempo real sem precisar se identificar. Privacidade total.</p>
+            <p className="text-[10px] text-slate-500">Converse com a Flora (Agente IA) em tempo real sem precisar se identificar. Privacidade total.</p>
             <button className="bg-green-600 text-white text-[10px] font-bold py-2 px-4 rounded-full mt-auto">
               Iniciar Conversa
             </button>
           </motion.div>
         </div>
 
-        <motion.div 
-          whileTap={{ scale: 0.98 }}
-          className="bg-brand-yellow/30 p-6 rounded-3xl flex flex-col items-center text-center space-y-3"
+        <motion.div
+            whileTap={{scale: 0.98}}
+            className="bg-brand-yellow/30 p-6 rounded-3xl flex flex-col space-y-3"
         >
+          <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
+            <Users className="w-5 h-5 text-green-600"/>
+          </div>
+          <h4 className="font-bold text-sm text-slate-800">Grupo de Apoio</h4>
           <p className="text-xs text-slate-600 font-medium">
             Conecte-se com outras mulheres em um ambiente mediado por profissionais.
           </p>
-          <button className="bg-white text-brand-purple border border-brand-yellow text-xs font-bold py-2 px-8 rounded-full shadow-sm">
+          <button
+              className="bg-yellow-300 text-orange-500 border border-brand-yellow text-xs font-bold py-2 px-8 rounded-full shadow-sm">
             Ver Agenda
           </button>
         </motion.div>
