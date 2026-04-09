@@ -58,7 +58,7 @@ export default function App() {
             onReset={() => setCurrentView('quiz')}
             onViewContacts={() => {
               setActiveTab('sos');
-              setCurrentView('sos');
+              setCurrentView('learn-more')
             }}
           />
         );
@@ -73,14 +73,14 @@ export default function App() {
 
   const getTitle = () => {
     switch (currentView) {
-      case 'home': return "Casa da Mulher";
+      case 'home': return "Casa da Mulher Brasileira";
       case 'para-voce': return "Ferramentas de Cuidado";
       case 'sos': return "Canais de Apoio";
       case 'quiz': return "Questionário";
-      case 'result': return "Resultado";
-      case 'education': return "Biblioteca";
-      case 'learn-more': return "Biblioteca";
-      default: return "Casa da Mulher";
+      case 'result': return "Casa da Mulher Brasileira";
+      case 'education': return "Casa da Mulher Brasileira";
+      case 'learn-more': return "Casa da Mulher Brasileira";
+      default: return "Casa da Mulher Brasileira";
     }
   };
 

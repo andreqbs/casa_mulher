@@ -49,6 +49,13 @@ export default function EmergencyView() {
         {contacts.map((contact, index) => (
           <motion.div
             key={contact.number}
+            onClick={() => {
+              if (contact.type === 'call') {
+                window.location.href = `tel:${contact.number}`;
+              } else {
+                window.location.href = `sms:${contact.number}`;
+              }
+            }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}

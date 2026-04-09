@@ -35,19 +35,19 @@ export default function Layout({
           )}
           <h1 className="text-xl font-bold text-brand-purple">{title}</h1>
         </div>
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={() => window.location.href = 'https://www.google.com'}
-            className="bg-brand-purple text-white px-3 py-1.5 rounded-lg font-bold text-[10px] uppercase tracking-wider shadow-sm active:scale-95 transition-all"
-          >
-            Sair Rápido
-          </button>
-          {showClose && (
-            <button onClick={onClose} className="p-1">
-              <X className="w-6 h-6 text-slate-400" />
-            </button>
-          )}
-        </div>
+        {/*<div className="flex items-center gap-2">*/}
+        {/*  <button */}
+        {/*    onClick={() => window.location.href = 'https://www.google.com'}*/}
+        {/*    className="bg-brand-purple text-white px-3 py-1.5 rounded-lg font-bold text-[10px] uppercase tracking-wider shadow-sm active:scale-95 transition-all"*/}
+        {/*  >*/}
+        {/*    Sair Rápido*/}
+        {/*  </button>*/}
+        {/*  {showClose && (*/}
+        {/*    <button onClick={onClose} className="p-1">*/}
+        {/*      <X className="w-6 h-6 text-slate-400" />*/}
+        {/*    </button>*/}
+        {/*  )}*/}
+        {/*</div>*/}
       </header>
 
       {/* Content */}
@@ -62,7 +62,7 @@ export default function Layout({
             onClick={() => onTabChange('home')}
             className={cn(
                 "flex flex-col items-center gap-1 transition-colors",
-                activeTab === 'home' ? "text-brand-purple" : "text-slate-400"
+                activeTab === 'home' ? "text-emerald-400" : "text-slate-400"
             )}
         >
           <Home className="w-6 h-6"/>
@@ -73,12 +73,12 @@ export default function Layout({
             onClick={() => onTabChange('sos')}
             className={cn(
                 "flex flex-col items-center gap-1 transition-colors",
-                activeTab === 'sos' ? "text-brand-purple" : "text-slate-400"
+                activeTab === 'sos' ? "text-emerald-400" : "text-slate-400"
             )}
         >
           <div className={cn(
               "p-3 rounded-full -mt-8 shadow-lg transition-all",
-              activeTab === 'sos' ? "bg-brand-purple text-white scale-110" : "bg-slate-100 text-slate-500"
+              activeTab === 'sos' ? "bg-emerald-500 text-white scale-110" : "bg-slate-100 text-slate-500"
           )}>
             <MapPin className="w-6 h-6"/>
           </div>
@@ -89,7 +89,7 @@ export default function Layout({
             onClick={() => onTabChange('para-voce')}
             className={cn(
                 "flex flex-col items-center gap-1 transition-colors",
-                activeTab === 'para-voce' ? "text-brand-purple" : "text-slate-400"
+                activeTab === 'para-voce' ? "text-emerald-400" : "text-slate-400"
             )}
         >
           <Heart className="w-6 h-6"/>

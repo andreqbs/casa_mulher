@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Play, ChevronRight, Leaf } from 'lucide-react';
+import { Play, ChevronRight, Leaf, TriangleAlert, Angry, Flame, Siren } from 'lucide-react';
 
 interface LearnMoreProps {
   onBack?: () => void;
@@ -9,7 +9,6 @@ interface LearnMoreProps {
 export default function LearnMore({ onBack }: LearnMoreProps) {
   return (
     <div className="px-6 py-4 space-y-8 animate-in fade-in duration-500 pb-24">
-      {/* Header Section */}
       <div className="space-y-4">
         <h1 className="text-3xl font-bold text-brand-purple leading-tight">
           Estágios do relacionamento
@@ -62,7 +61,7 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
         <div className="bg-yellow-50/50 rounded-[32px] p-6 border-l-4 border-yellow-400 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold text-sm">
-              ⚡
+              <TriangleAlert className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">1. Relação com sinais de alerta</h3>
           </div>
@@ -71,11 +70,10 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        {/* Stage 2 */}
         <div className="bg-brand-purple-light/30 rounded-[32px] p-6 border-l-4 border-brand-purple space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple font-bold text-sm">
-              ⚠️
+              <Angry className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">2. Relação Desgastante</h3>
           </div>
@@ -84,11 +82,10 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        {/* Stage 3 */}
         <div className="bg-green-50/50 rounded-[32px] p-6 border-l-4 border-green-500 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">
-              💚
+              <Flame className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">3. Relação Agressiva</h3>
           </div>
@@ -97,11 +94,10 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        {/* Stage 4 */}
         <div className="bg-orange-50/50 rounded-[32px] p-6 border-l-4 border-orange-400 space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-sm">
-              🛑
+                <Siren className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">4. Relação de Alto Risco</h3>
           </div>
@@ -149,7 +145,7 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
         <div className="space-y-3 pt-4 border-t border-slate-200">
           <div className="flex items-center gap-2 text-brand-purple font-bold">
             <Leaf className="w-5 h-5" />
-            <h4>Comece de onde fizer mais sentido pra você</h4>
+            <h4>Onde fizer mais sentido pra você?</h4>
           </div>
           <p className="text-xs text-slate-600">Você não precisa fazer tudo agora. Mas pode começar por algo.</p>
           

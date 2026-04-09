@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion} from 'motion/react';
-import {Play, Volume2, MessageCircle, Download, LogOut} from 'lucide-react';
+import {Play, Volume2, MessageCircle, ArrowRight, LogOut} from 'lucide-react';
 
 export default function EducationView() {
     const handleFastExit = () => {
@@ -129,11 +129,7 @@ export default function EducationView() {
                 <div className="flex flex-col gap-3">
                     <button
                         className="bg-white text-brand-purple px-8 py-4 rounded-2xl font-bold text-sm shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
-                        <MessageCircle className="w-5 h-5"/> Conversar Agora
-                    </button>
-                    <button
-                        className="bg-white/20 hover:bg-white/30 text-white border border-white/40 px-8 py-4 rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-2">
-                        <Download className="w-5 h-5"/> Baixar Guia de Segurança
+                        <ArrowRight className="w-5 h-5"/> Começar por aqui
                     </button>
                 </div>
             </div>
