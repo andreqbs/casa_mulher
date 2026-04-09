@@ -11,8 +11,9 @@ import QuizView from './components/QuizView';
 import ResultView from './components/ResultView';
 import EducationView from './components/EducationView';
 import CareToolsView from './components/CareToolsView';
+import LearnMore from './components/LearnMore';
 
-type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education';
+type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education' | 'learn-more';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -33,6 +34,7 @@ export default function App() {
           <HomeView 
             onStartQuiz={() => setCurrentView('quiz')} 
             onViewJuliana={() => setCurrentView('education')}
+            onLearnMore={() => setCurrentView('learn-more')}
           />
         );
       case 'para-voce':
@@ -62,8 +64,10 @@ export default function App() {
         );
       case 'education':
         return <EducationView />;
+      case 'learn-more':
+        return <LearnMore onBack={() => setCurrentView('home')} />;
       default:
-        return <HomeView onStartQuiz={() => setCurrentView('quiz')} onViewJuliana={() => setCurrentView('education')} />;
+        return <HomeView onStartQuiz={() => setCurrentView('quiz')} onViewJuliana={() => setCurrentView('education')} onLearnMore={() => setCurrentView('learn-more')} />;
     }
   };
 
@@ -75,6 +79,7 @@ export default function App() {
       case 'quiz': return "Questionário";
       case 'result': return "Resultado";
       case 'education': return "Biblioteca";
+      case 'learn-more': return "Biblioteca";
       default: return "Casa da Mulher";
     }
   };

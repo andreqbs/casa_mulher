@@ -5,9 +5,10 @@ import { Play, ChevronRight, MessageCircle, Video, Users } from 'lucide-react';
 interface HomeViewProps {
   onStartQuiz: () => void;
   onViewJuliana: () => void;
+  onLearnMore?: () => void;
 }
 
-export default function HomeView({ onStartQuiz, onViewJuliana }: HomeViewProps) {
+export default function HomeView({ onStartQuiz, onViewJuliana, onLearnMore }: HomeViewProps) {
   return (
     <div className="px-6 space-y-8 animate-in fade-in duration-500">
       {/* Hero Card */}
@@ -69,7 +70,8 @@ export default function HomeView({ onStartQuiz, onViewJuliana }: HomeViewProps) 
         <div className="grid grid-cols-2 gap-4">
           <motion.div 
             whileTap={{ scale: 0.98 }}
-            className="bg-brand-purple-light/50 p-5 rounded-3xl space-y-3 flex flex-col"
+            onClick={onLearnMore}
+            className="bg-brand-purple-light/50 p-5 rounded-3xl space-y-3 flex flex-col cursor-pointer"
           >
             <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
               <Video className="w-5 h-5 text-brand-purple" />
