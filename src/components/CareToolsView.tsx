@@ -1,0 +1,74 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Dumbbell, Wind, Sparkles, PenTool, ArrowRight } from 'lucide-react';
+
+export default function CareToolsView() {
+  const tools = [
+    {
+      title: "Treinar",
+      desc: "Exercícios leves e alongamentos para liberar a tensão do corpo.",
+      icon: <Dumbbell className="w-6 h-6 text-brand-purple" />,
+      color: "bg-brand-purple-light/50"
+    },
+    {
+      title: "Acalmar",
+      desc: "Práticas de respiração e meditação para momentos de ansiedade.",
+      icon: <Wind className="w-6 h-6 text-green-600" />,
+      color: "bg-brand-green/20"
+    },
+    {
+      title: "Minhas Experiências",
+      desc: "Um espaço para revisitar sua jornada e reconhecer sua força.",
+      icon: <Sparkles className="w-6 h-6 text-orange-500" />,
+      color: "bg-brand-yellow/20"
+    },
+    {
+      title: "Diário",
+      desc: "Escreva livremente sobre seus sentimentos em um espaço seguro e privado.",
+      icon: <PenTool className="w-6 h-6 text-slate-600" />,
+      color: "bg-slate-100"
+    }
+  ];
+
+  return (
+    <div className="px-6 py-4 space-y-8 animate-in fade-in duration-500">
+      <div className="space-y-4">
+        <h2 className="text-3xl font-bold text-brand-purple leading-tight">
+          Um momento para você, em um lugar seguro.
+        </h2>
+        <p className="text-slate-500 text-sm leading-relaxed">
+          Explore ferramentas desenhadas para trazer calma e reconexão. Siga o seu próprio ritmo, sem pressa.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4">
+        {tools.map((tool, index) => (
+          <motion.div
+            key={tool.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            whileTap={{ scale: 0.98 }}
+            className={`${tool.color} p-8 rounded-[40px] relative group cursor-pointer overflow-hidden`}
+          >
+            <div className="space-y-4 relative z-10">
+              <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm">
+                {tool.icon}
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800">{tool.title}</h3>
+              <p className="text-sm text-slate-500 max-w-[80%]">{tool.desc}</p>
+            </div>
+            <ArrowRight className="absolute bottom-8 right-8 w-6 h-6 text-slate-300 group-hover:text-brand-purple transition-colors" />
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all" />
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center pt-8">
+        <p className="text-slate-400 text-[10px] italic">
+          “Você é a sua maior prioridade.”
+        </p>
+      </div>
+    </div>
+  );
+}
