@@ -12,8 +12,12 @@ import ResultView from './components/ResultView';
 import EducationView from './components/EducationView';
 import CareToolsView from './components/CareToolsView';
 import LearnMore from './components/LearnMore';
+import BreathView from './components/BreathView';
+import CheckinView from './components/CheckinView';
+import FloraView from './components/FloraView';
+import ExperienciasView from './components/ExperienciasView';
 
-type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education' | 'learn-more';
+type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education' | 'learn-more' | 'breath' | 'checkin' | 'flora' | 'experiencias';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -31,14 +35,23 @@ export default function App() {
     switch (currentView) {
       case 'home':
         return (
-          <HomeView 
-            onStartQuiz={() => setCurrentView('quiz')} 
+          <HomeView
+            onStartQuiz={() => setCurrentView('quiz')}
             onViewJuliana={() => setCurrentView('education')}
             onLearnMore={() => setCurrentView('learn-more')}
+            onOpenFlora={() => setCurrentView('flora')}
           />
         );
       case 'para-voce':
-        return <CareToolsView />;
+        return <CareToolsView onNavigate={(view) => setCurrentView(view as ViewState)} />;
+      case 'breath':
+        return <BreathView onBack={() => setCurrentView('para-voce')} />;
+      case 'checkin':
+        return <CheckinView onBack={() => setCurrentView('para-voce')} />;
+      case 'flora':
+        return <FloraView onBack={() => setCurrentView('home')} />;
+      case 'experiencias':
+        return <ExperienciasView onBack={() => setCurrentView('para-voce')} />;
       case 'sos':
         return <EmergencyView />;
       case 'quiz':
@@ -58,7 +71,7 @@ export default function App() {
             onReset={() => setCurrentView('quiz')}
             onViewContacts={() => {
               setActiveTab('sos');
-              setCurrentView('sos');
+              setCurrentView('learn-more')
             }}
           />
         );
@@ -73,14 +86,18 @@ export default function App() {
 
   const getTitle = () => {
     switch (currentView) {
-      case 'home': return "Casa da Mulher";
+      case 'home': return "Casa da Mulher Brasileira";
       case 'para-voce': return "Ferramentas de Cuidado";
       case 'sos': return "Canais de Apoio";
       case 'quiz': return "Questionário";
-      case 'result': return "Resultado";
-      case 'education': return "Biblioteca";
-      case 'learn-more': return "Biblioteca";
-      default: return "Casa da Mulher";
+      case 'result': return "Casa da Mulher Brasileira";
+      case 'education': return "Casa da Mulher Brasileira";
+      case 'learn-more': return "Casa da Mulher Brasileira";
+      case 'breath': return "Respiração Guiada";
+      case 'checkin': return "Prática do Dia";
+      case 'flora': return "Chat com a Flora";
+      case 'experiencias': return "Minhas Experiências";
+      default: return "Casa da Mulher Brasileira";
     }
   };
 
@@ -89,7 +106,7 @@ export default function App() {
       activeTab={activeTab} 
       onTabChange={handleTabChange}
       title={getTitle()}
-      showBack={currentView !== 'home' && currentView !== 'para-voce' && currentView !== 'sos'}
+      showBack={!['home', 'para-voce', 'sos', 'breath', 'checkin', 'flora', 'experiencias'].includes(currentView)}
       onBack={() => setCurrentView('home')}
       showClose={currentView === 'quiz' || currentView === 'result'}
       onClose={() => setCurrentView('home')}

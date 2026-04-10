@@ -1,0 +1,31 @@
+import React, { createContext, useContext, useState } from "react";
+
+type MenuContextProps = {
+    visible: boolean;
+    openMenu: () => void;
+    closeMenu: () => void;
+};
+
+const MenuContext = createContext<MenuContextProps>({
+    visible: false,
+    openMenu: () => {},
+    closeMenu: () => {},
+});
+
+export function MenuProvider({ children }: { children: React.ReactNode }) {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <MenuContext.Provider
+            value={{
+                visible,
+                openMenu: () => setVisible(true),
+                closeMenu: () => setVisible(false),
+            }}
+        >
+            {children}
+        </MenuContext.Provider>
+    );
+}
+
+export const useMenu = () => useContext(MenuContext);

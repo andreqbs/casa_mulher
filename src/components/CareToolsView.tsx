@@ -2,32 +2,48 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Dumbbell, Wind, Sparkles, PenTool, ArrowRight } from 'lucide-react';
 
-export default function CareToolsView() {
-  const tools = [
+interface Tool {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  color: string;
+  action?: () => void;
+}
+
+interface CareToolsViewProps {
+  onNavigate?: (view: string) => void;
+}
+
+export default function CareToolsView({ onNavigate }: CareToolsViewProps) {
+  const tools: Tool[] = [
     {
       title: "Treinar",
       desc: "Exercícios leves e alongamentos para liberar a tensão do corpo.",
       icon: <Dumbbell className="w-6 h-6 text-brand-purple" />,
-      color: "bg-brand-purple-light/50"
+      color: "bg-brand-purple-light/50",
+      action: () => onNavigate?.('checkin'),
     },
     {
       title: "Acalmar",
       desc: "Práticas de respiração e meditação para momentos de ansiedade.",
       icon: <Wind className="w-6 h-6 text-green-600" />,
-      color: "bg-brand-green/20"
+      color: "bg-brand-green/20",
+      action: () => onNavigate?.('breath'),
     },
     {
       title: "Minhas Experiências",
       desc: "Um espaço para revisitar sua jornada e reconhecer sua força.",
       icon: <Sparkles className="w-6 h-6 text-orange-500" />,
-      color: "bg-brand-yellow/20"
+      color: "bg-brand-yellow/20",
+      action: () => onNavigate?.('experiencias'),
     },
     {
       title: "Diário",
       desc: "Escreva livremente sobre seus sentimentos em um espaço seguro e privado.",
       icon: <PenTool className="w-6 h-6 text-slate-600" />,
-      color: "bg-slate-100"
-    }
+      color: "bg-slate-100",
+      action: () => onNavigate?.('diario'),
+    },
   ];
 
   return (
@@ -49,6 +65,7 @@ export default function CareToolsView() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => tool.action?.()}
             className={`${tool.color} p-8 rounded-[40px] relative group cursor-pointer overflow-hidden`}
           >
             <div className="space-y-4 relative z-10">
