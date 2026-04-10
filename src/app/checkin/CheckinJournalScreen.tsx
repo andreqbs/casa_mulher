@@ -13,7 +13,7 @@ export default function CheckinJournalScreen({ content, onComplete, onSkip }: Ch
   const [text, setText] = useState('');
 
   return (
-    <div className={`flex flex-col min-h-full ${content.bgColor} px-6 py-8`}>
+    <div className={`flex flex-col flex-1 ${content.bgColor} px-6 py-8`}>
 
       {/* Header */}
       <motion.div

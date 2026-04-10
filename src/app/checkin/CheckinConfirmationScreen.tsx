@@ -10,7 +10,7 @@ interface CheckinConfirmationScreenProps {
 
 export default function CheckinConfirmationScreen({ content, onClose }: CheckinConfirmationScreenProps) {
   return (
-    <div className="flex flex-col min-h-full bg-gradient-to-b from-brand-purple to-violet-700 px-6 py-10">
+    <div className="flex flex-col flex-1 bg-gradient-to-b from-brand-purple to-violet-700 px-6 py-10">
 
       {/* Ícone de celebração */}
       <motion.div

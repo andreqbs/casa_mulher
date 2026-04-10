@@ -26,6 +26,7 @@ export default function CheckinView({ onBack }: CheckinViewProps) {
   const content = CHECKIN_CONTENT_WEB[checkinId];
 
   return (
+    <div className="flex-1 flex flex-col min-h-0">
     <AnimatePresence mode="wait">
       <motion.div
         key={screen}
@@ -34,7 +35,7 @@ export default function CheckinView({ onBack }: CheckinViewProps) {
         animate="center"
         exit="exit"
         transition={{ duration: 0.25, ease: 'easeInOut' }}
-        className="min-h-full"
+        className="flex-1 flex flex-col"
       >
         {screen === 'start' && (
           <CheckinStartScreen
@@ -68,5 +69,6 @@ export default function CheckinView({ onBack }: CheckinViewProps) {
         )}
       </motion.div>
     </AnimatePresence>
+    </div>
   );
 }

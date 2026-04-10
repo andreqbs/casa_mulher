@@ -16,7 +16,7 @@ export default function BreathScreen({ onStart, onBack }: BreathScreenProps) {
   }
 
   return (
-    <div className="flex flex-col min-h-full bg-green-50 px-6 py-4">
+    <div className="flex flex-col flex-1 bg-green-50 px-6 py-4">
 
       {/* Back button */}
       <button

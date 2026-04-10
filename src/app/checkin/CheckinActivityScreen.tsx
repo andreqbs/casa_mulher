@@ -199,7 +199,7 @@ export default function CheckinActivityScreen({ content, onNext }: CheckinActivi
     : 'FEITO, PRÓXIMA ETAPA ›';
 
   return (
-    <div className={`flex flex-col min-h-full ${content.bgColor} px-6 py-8`}>
+    <div className={`flex flex-col flex-1 ${content.bgColor} px-6 py-8`}>
 
       {/* Título da atividade */}
       <motion.div

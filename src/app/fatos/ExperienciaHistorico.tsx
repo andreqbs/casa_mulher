@@ -59,8 +59,11 @@ export default function ExperienciaHistorico({ onBack }: ExperienciaHistoricoPro
   return (
     <div className="px-6 pb-8">
       {/* Header */}
-      <div className="flex flex-col items-center text-center border-t-2 border-t-[#f34b21] mt-5 py-4">
-        <h1 className="text-xl font-bold text-[#f34b21] leading-none">Histórico de Experiências</h1>
+      <div className="flex items-center gap-2 pt-4 pb-2 border-b-2 border-b-[#f34b21]">
+        <button onClick={onBack} className="p-1 -ml-1">
+          <ChevronLeft className="w-5 h-5 text-[#f34b21]" />
+        </button>
+        <h1 className="text-lg font-bold text-[#f34b21] leading-none">Histórico de Experiências</h1>
       </div>
 
       {experiencias.length === 0 ? (
