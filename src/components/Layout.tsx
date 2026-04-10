@@ -25,7 +25,6 @@ export default function Layout({
 }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen bg-white max-w-md mx-auto relative shadow-xl overflow-hidden">
-      {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 bg-white sticky top-0 z-10">
         <div className="flex items-center gap-2">
           {showBack && (

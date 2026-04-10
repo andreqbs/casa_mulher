@@ -1,15 +1,16 @@
 import React from 'react';
 import {motion} from 'motion/react';
-import {Play, ChevronRight, MessageCircle, Video, Users} from 'lucide-react';
-import mulherImg from '../assets/mulher.png';
+import {ChevronRight, MessageCircle, Video, Users} from 'lucide-react';
+import mulherImg from '@/src/assets/mulher.png';
 
 interface HomeViewProps {
     onStartQuiz: () => void;
     onViewJuliana: () => void;
     onLearnMore?: () => void;
+    onOpenFlora?: () => void;
 }
 
-export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore}: HomeViewProps) {
+export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore, onOpenFlora}: HomeViewProps) {
     return (
         <div className="px-6 space-y-8 animate-in fade-in duration-500">
             <motion.div
@@ -71,7 +72,7 @@ export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore}: Home
                 <div className="grid grid-cols-2 gap-4">
                     <motion.div
                         whileTap={{scale: 0.98}}
-                        onClick={() => window.open('https://www.youtube.com', '_blank')}
+                        onClick={() => window.open('https://www.youtube.com/watch?v=YKm-kfs01sE', '_blank')}
                         className="bg-brand-purple-light/50 p-5 rounded-3xl space-y-3 flex flex-col cursor-pointer"
                     >
                         <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
@@ -87,18 +88,16 @@ export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore}: Home
 
                     <motion.div
                         whileTap={{scale: 0.98}}
-                        className="bg-brand-green/30 p-5 rounded-3xl space-y-3 flex flex-col"
+                        onClick={onOpenFlora}
+                        className="bg-brand-green/30 p-5 rounded-3xl space-y-3 flex flex-col cursor-pointer"
                     >
                         <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
                             <MessageCircle className="w-5 h-5 text-green-600"/>
                         </div>
                         <h4 className="font-bold text-sm text-slate-800">Chat Anônimo</h4>
                         <p className="text-[10px] text-slate-500">Converse com a Flora (Agente IA) em tempo real sem
-                            precisar se
-                            identificar. Privacidade total.</p>
-                        <button className="bg-green-600 text-white text-[10px] font-bold py-2 px-4 rounded-full mt-auto"
-                                onClick={() => window.open('https://hooy.com.br', '_blank')}
-                        >
+                            precisar se identificar. Privacidade total.</p>
+                        <button className="bg-green-600 text-white text-[10px] font-bold py-2 px-4 rounded-full mt-auto">
                             Iniciar Conversa
                         </button>
                     </motion.div>
