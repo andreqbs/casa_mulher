@@ -78,7 +78,7 @@ export default function BreathActivityScreen({ cycles, onStop }: BreathActivityS
   const progress = 1 - (secondsLeft / currentPhase.duration);
 
   return (
-    <div className="flex flex-col items-center justify-between min-h-full bg-green-50 px-6 py-8">
+    <div className="flex flex-col items-center justify-between flex-1 bg-green-50 px-6 py-8">
 
       {/* Cycle progress */}
       <div className="w-full text-center">

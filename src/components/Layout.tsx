@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, Heart, MapPin, X, ChevronLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
+import logoImg from '@/src/assets/casa_mulher_brasileira_2.png';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,48 +10,69 @@ interface LayoutProps {
   showBack?: boolean;
   onBack?: () => void;
   title?: string;
+  showLogo?: boolean;
   showClose?: boolean;
   onClose?: () => void;
+  hideHeader?: boolean;
 }
 
-export default function Layout({ 
-  children, 
-  activeTab, 
-  onTabChange, 
-  showBack, 
-  onBack, 
+export default function Layout({
+  children,
+  activeTab,
+  onTabChange,
+  showBack,
+  onBack,
   title = "Casa da Mulher",
+  showLogo = false,
   showClose,
-  onClose
+  onClose,
+  hideHeader = false,
 }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-white max-w-md mx-auto relative shadow-xl overflow-hidden">
-      <header className="flex items-center justify-between px-6 py-4 bg-white sticky top-0 z-10">
-        <div className="flex items-center gap-2">
-          {showBack && (
-            <button onClick={onBack} className="p-1 -ml-2">
-              <ChevronLeft className="w-6 h-6 text-brand-purple" />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-brand-purple">{title}</h1>
-        </div>
-        {/*<div className="flex items-center gap-2">*/}
-        {/*  <button */}
-        {/*    onClick={() => window.location.href = 'https://www.google.com'}*/}
-        {/*    className="bg-brand-purple text-white px-3 py-1.5 rounded-lg font-bold text-[10px] uppercase tracking-wider shadow-sm active:scale-95 transition-all"*/}
-        {/*  >*/}
-        {/*    Sair Rápido*/}
-        {/*  </button>*/}
-        {/*  {showClose && (*/}
-        {/*    <button onClick={onClose} className="p-1">*/}
-        {/*      <X className="w-6 h-6 text-slate-400" />*/}
-        {/*    </button>*/}
-        {/*  )}*/}
-        {/*</div>*/}
-      </header>
+    <div className="flex flex-col h-screen bg-white max-w-md mx-auto relative shadow-xl overflow-hidden">
+      {!hideHeader && (
+        <header className="grid grid-cols-3 items-center px-4 py-3 bg-white border-b border-slate-100 sticky top-0 z-10">
+          {/* Coluna esquerda — botão Voltar */}
+          <div>
+            {showBack && (
+              <button
+                onClick={onBack}
+                className="flex items-center gap-0.5 text-brand-purple font-medium text-sm active:opacity-60 transition-opacity"
+              >
+                <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
+                Voltar
+              </button>
+            )}
+          </div>
+
+          {/* Coluna central — logo ou título */}
+          <div className="flex justify-center items-center">
+            {showLogo ? (
+              <img
+                src={logoImg}
+                alt="Casa da Mulher Brasileira"
+                className="h-8 w-auto object-contain"
+              />
+            ) : (
+              <h1 className="text-base font-bold text-brand-purple text-center leading-tight truncate px-1">
+                {title}
+              </h1>
+            )}
+          </div>
+
+          {/* Coluna direita — fechar (quando aplicável) */}
+          <div className="flex justify-end">
+            {showClose && (
+              <button onClick={onClose} className="p-1">
+                <X className="w-5 h-5 text-slate-400" />
+              </button>
+            )}
+          </div>
+        </header>
+      )}
 
       {/* Content */}
-      <main className="flex-1 pb-24 overflow-y-auto">
+      <main className="flex-1 pb-24 overflow-y-auto flex flex-col">
         {children}
       </main>
 

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, X, BookOpen } from 'lucide-react';
+import { Plus, X, BookOpen, ChevronLeft } from 'lucide-react';
 
 interface InicioFatosProps {
   onCriar: (texto: string) => void;
   onHistorico: () => void;
+  onBack: () => void;
 }
 
-export default function InicioFatos({ onCriar, onHistorico }: InicioFatosProps) {
+export default function InicioFatos({ onCriar, onHistorico, onBack }: InicioFatosProps) {
   const [showModal, setShowModal] = useState(false);
   const [texto, setTexto] = useState('');
   const [erro, setErro] = useState('');
@@ -35,36 +36,44 @@ export default function InicioFatos({ onCriar, onHistorico }: InicioFatosProps) 
   };
 
   return (
-    <div className="px-6 pb-8 space-y-6">
+    <div className="flex flex-col flex-1 px-6 pb-8">
       {/* Header */}
-      <div className="flex flex-col items-center text-center border-t-2 border-t-[#f34b21] mt-5 py-4">
-        <h1 className="text-xl font-bold text-[#f34b21] leading-none">
-          Minhas Experiências
+      <div className="flex items-center gap-2 pt-4 pb-2 border-b-2 border-b-[#f34b21]">
+        <button onClick={onBack} className="p-1 -ml-1">
+          <ChevronLeft className="w-5 h-5 text-[#f34b21]" />
+        </button>
+        <h1 className="text-lg font-bold text-[#f34b21] leading-none">
+          Voltar
         </h1>
       </div>
 
-      {/* Illustration */}
-      <div className="flex justify-center">
-        <div className="w-28 h-28 rounded-full bg-[#f34b21]/10 flex items-center justify-center">
-          <span className="text-5xl">🌱</span>
+      {/* Middle — grows to fill remaining space */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-6 py-4">
+        <h2 className="text-2xl font-bold text-center text-[#f34b21] leading-snug">
+          Minhas Experiências
+        </h2>
+        <div className="flex justify-center">
+          <div className="w-28 h-28 rounded-full bg-[#f34b21]/10 flex items-center justify-center">
+            <span className="text-5xl">🌱</span>
+          </div>
         </div>
+
+        {/* Main message */}
+        <h2 className="text-2xl font-bold text-center text-[#f34b21] leading-snug">
+          Escrever sobre suas vivências ajuda a entender suas emoções e a crescer com elas.
+        </h2>
+
+        <p className="text-sm text-slate-500 text-center italic">
+          Fatos agradáveis e desagradáveis acontecem a todo momento, pausar e refletir sobre eles é a
+          chave para tomada de decisões mais assertivas e maduras.
+        </p>
       </div>
 
-      {/* Main message */}
-      <h2 className="text-2xl font-bold text-center text-[#f34b21] leading-snug">
-        Escrever sobre suas vivências ajuda a entender suas emoções e a crescer com elas.
-      </h2>
-
-      <p className="text-sm text-slate-500 text-center italic">
-        Fatos agradáveis e desagradáveis acontecem a todo momento, pausar e refletir sobre eles é a
-        chave para tomada de decisões mais assertivas e maduras.
-      </p>
-
-      {/* Actions */}
-      <div className="space-y-3 pt-2">
+      {/* Actions — pinned to bottom */}
+      <div className="space-y-3 pb-2">
         <motion.button
-          whileTap={{ scale: 0.97 }}
-          onClick={() => setShowModal(true)}
+            whileTap={{scale: 0.97}}
+            onClick={() => setShowModal(true)}
           className="w-full flex items-center justify-center gap-2 border-2 border-[#f34b21] text-[#f34b21] font-bold text-sm py-3 px-4 rounded-2xl hover:bg-[#f34b21]/5 transition-colors"
         >
           <Plus className="w-4 h-4" />

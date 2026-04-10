@@ -23,28 +23,32 @@ export default function BreathView({ onBack }: BreathViewProps) {
   }
 
   return (
-    <AnimatePresence mode="wait">
-      {screen === 'intro' ? (
-        <motion.div
-          key="intro"
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -24 }}
-          transition={{ duration: 0.25 }}
-        >
-          <BreathScreen onStart={handleStart} onBack={onBack} />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="activity"
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 24 }}
-          transition={{ duration: 0.25 }}
-        >
-          <BreathActivityScreen cycles={cycles} onStop={handleStop} />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div className="flex-1 flex flex-col min-h-0">
+      <AnimatePresence mode="wait">
+        {screen === 'intro' ? (
+          <motion.div
+            key="intro"
+            className="flex-1 flex flex-col"
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -24 }}
+            transition={{ duration: 0.25 }}
+          >
+            <BreathScreen onStart={handleStart} onBack={onBack} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="activity"
+            className="flex-1 flex flex-col"
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 24 }}
+            transition={{ duration: 0.25 }}
+          >
+            <BreathActivityScreen cycles={cycles} onStop={handleStop} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

@@ -22,7 +22,7 @@ export default function CheckinStartScreen({ content, checkinId, onStart, onBack
   const Icon = ICON_MAP[content.iconName] ?? Wind;
 
   return (
-    <div className={`flex flex-col min-h-full ${content.bgColor} px-6 py-4`}>
+    <div className={`flex flex-col flex-1 ${content.bgColor} px-6 py-4`}>
 
       {/* Back */}
       <button

@@ -131,6 +131,7 @@ export default function ExperienciasView({ onBack }: ExperienciasViewProps) {
           <InicioFatos
             onCriar={handleCriarFato}
             onHistorico={() => navigate('historico')}
+            onBack={onBack}
           />
         );
 
@@ -192,22 +193,20 @@ export default function ExperienciasView({ onBack }: ExperienciasViewProps) {
   };
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
-      {/* Scrollable content */}
-      <div className="flex-1 overflow-y-auto">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={screen}
-            variants={SLIDE_VARIANTS}
-            initial={{ x: direction * 60, opacity: 0 }}
-            animate="center"
-            exit={{ x: direction * -60, opacity: 0 }}
-            transition={{ duration: 0.22, ease: 'easeInOut' }}
-          >
-            {renderScreen()}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+    <div className="flex-1 flex flex-col min-h-0">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={screen}
+          className="flex-1 flex flex-col overflow-y-auto"
+          variants={SLIDE_VARIANTS}
+          initial={{ x: direction * 60, opacity: 0 }}
+          animate="center"
+          exit={{ x: direction * -60, opacity: 0 }}
+          transition={{ duration: 0.22, ease: 'easeInOut' }}
+        >
+          {renderScreen()}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
