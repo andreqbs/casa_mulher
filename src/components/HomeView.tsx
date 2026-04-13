@@ -20,11 +20,10 @@ export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore, onOpe
             >
                 <div className="relative z-10 space-y-4">
                     <h2 className="text-2xl font-bold text-brand-purple leading-tight">
-                        Saiba se você está no ciclo da violência
+                        Reconheça o ciclo da violência
                     </h2>
                     <p className="text-slate-600 text-sm">
-                        Identificar os sinais é o primeiro passo para a liberdade. Entenda as fases do ciclo e como
-                        buscar ajuda.
+                        Entenda as fases do ciclo e como buscar ajuda.
                     </p>
                     <button
                         onClick={onStartQuiz}
@@ -78,9 +77,8 @@ export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore, onOpe
                         <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
                             <Video className="w-5 h-5 text-brand-purple"/>
                         </div>
-                        <h4 className="font-bold text-sm text-slate-800 leading-tight">Acompanhe o conteúdo para
-                            descobrir se está
-                            em um relacionamento tóxico</h4>
+                        <h4 className="font-bold text-sm text-slate-800 leading-tight">Acompanhe o conteúdo e entenda
+                            o que fazer para sair de um relacionamento tóxico</h4>
                         <p className="text-[10px] text-slate-500">Este conteúdo te ajuda a entender o que está
                             acontecendo e como
                             sair disso com mais segurança.</p>
@@ -94,9 +92,9 @@ export default function HomeView({onStartQuiz, onViewJuliana, onLearnMore, onOpe
                         <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm">
                             <MessageCircle className="w-5 h-5 text-green-600"/>
                         </div>
-                        <h4 className="font-bold text-sm text-slate-800">Chat Anônimo</h4>
-                        <p className="text-[10px] text-slate-500">Converse com a Flora (Agente IA) em tempo real sem
-                            precisar se identificar. Privacidade total.</p>
+                        <h4 className="font-bold text-sm text-slate-800">Precisa conversar agora?</h4>
+                        <p className="text-[10px] text-slate-500">Fale com a Flora, uma assistente IA que te escuta
+                        sem julgamentos e te ajuda a organizar o que você está sentindo de forma anônima e segura.</p>
                         <button className="bg-green-600 text-white text-[10px] font-bold py-2 px-4 rounded-full mt-auto">
                             Iniciar Conversa
                         </button>
