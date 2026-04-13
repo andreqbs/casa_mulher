@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Dumbbell, Wind, Sparkles, PenTool, ArrowRight } from 'lucide-react';
+import { Brain, Wind, Sparkles, NotebookText, ArrowRight } from 'lucide-react';
 
 interface Tool {
   title: string;
@@ -14,12 +14,12 @@ interface CareToolsViewProps {
   onNavigate?: (view: string) => void;
 }
 
-export default function CareToolsView({ onNavigate }: CareToolsViewProps) {
+export default function CareToolsView({ onNavigate }: Readonly<CareToolsViewProps>) {
   const tools: Tool[] = [
     {
       title: "Treinar",
       desc: "Práticas rápidas para acalmar a mente e se sentir mais segura no momento",
-      icon: <Dumbbell className="w-6 h-6 text-brand-purple" />,
+      icon: <Brain className="w-6 h-6 text-brand-purple" />,
       color: "bg-brand-purple-light/50",
       action: () => onNavigate?.('checkin'),
     },
@@ -40,9 +40,9 @@ export default function CareToolsView({ onNavigate }: CareToolsViewProps) {
     {
       title: "Diário",
       desc: "Veja seus registros e perceba, aos poucos o que está mudando dentro de você.",
-      icon: <PenTool className="w-6 h-6 text-slate-600" />,
+      icon: <NotebookText className="w-6 h-6 text-slate-600" />,
       color: "bg-slate-100",
-      action: () => onNavigate?.('diario'),
+      action: () => onNavigate?.('historico'),
     },
   ];
 

@@ -1,17 +1,18 @@
 import React, {useCallback, useRef, useState} from 'react';
 import ChatScreen, {ChatMessage} from '@/src/components/chat/ChatScreen';
 import {sendMessageAPI} from '@/src/services/chat/conversationService';
-import {ChevronLeft, Panda} from "lucide-react";
+import {ChevronLeft} from "lucide-react";
+import girrafeImg from "@/src/assets/giraffe.png"
 
 const FLORA_USER_ID = 'flora-ai';
 const APP_USER_ID = 'casa-mulher-web';
 
 const FLORA_THEME = {
-    userBubbleColor: '#F37335',
-    aiBubbleColor: '#FFF3E0',
+    userBubbleColor: '#c087ff',
+    aiBubbleColor: '#ceffcb',
     userTextColor: '#FFFFFF',
     aiTextColor: '#374151',
-    sendButtonColor: '#F37335',
+    sendButtonColor: '#c087ff',
     backgroundColor: '#FFF8F0',
     placeholderText: 'Mensagem…',
 };
@@ -38,7 +39,7 @@ interface FloraChatProps {
     onBack: () => void;
 }
 
-export default function FloraChat({onBack}: FloraChatProps) {
+export default function FloraChat({onBack}: Readonly<FloraChatProps>) {
     const sessionId = useRef(getSessionId());
 
     const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
@@ -90,7 +91,7 @@ export default function FloraChat({onBack}: FloraChatProps) {
 
     return (
         <div className="flex flex-col flex-1 min-h-0">
-            <div className="flex items-center gap-3 px-4 py-3 bg-[#F37335] text-white flex-shrink-0">
+            <div className="flex items-center gap-3 px-4 py-3 bg-[#A17AAA] text-white flex-shrink-0">
                 <button
                     onClick={onBack}
                     className="text-white/80 hover:text-white p-1 -ml-1"
@@ -100,7 +101,11 @@ export default function FloraChat({onBack}: FloraChatProps) {
                 </button>
                 <div
                     className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg flex-shrink-0">
-                    <Panda/>
+                    <img
+                        src={girrafeImg}
+                        className="w-full h-full object-cover brightness-0 invert"
+                        referrerPolicy="no-referrer"
+                    />
                 </div>
                 <div>
                     <p className="font-bold text-sm leading-tight">Flora</p>

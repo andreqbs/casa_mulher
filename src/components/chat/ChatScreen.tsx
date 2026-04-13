@@ -47,11 +47,11 @@ export default function ChatScreen({
   theme = {},
 }: ChatScreenProps) {
   const {
-    userBubbleColor   = '#F37335',
+    userBubbleColor   = '#e2b9f6',
     aiBubbleColor     = '#FFF3E0',
     userTextColor     = '#FFFFFF',
     aiTextColor       = '#111827',
-    sendButtonColor   = '#F37335',
+    sendButtonColor   = '#cf56fd',
     backgroundColor   = '#FFF8F0',
     placeholderText   = 'Digite sua mensagem…',
   } = theme;
@@ -106,7 +106,7 @@ export default function ChatScreen({
   if (initialLoading) {
     return (
       <div className="flex-1 flex items-center justify-center" style={{ backgroundColor }}>
-        <Loader2 className="w-8 h-8 animate-spin text-orange-400" />
+        <Loader2 className="w-8 h-8 animate-spin text-yellow-400" />
       </div>
     );
   }
@@ -114,7 +114,6 @@ export default function ChatScreen({
   return (
     <div className="flex flex-col h-full" style={{ backgroundColor }}>
 
-      {/* Carregar mensagens mais antigas */}
       {hasMoreOlderMessages && (
         <div className="flex justify-center py-2">
           <button
@@ -127,7 +126,6 @@ export default function ChatScreen({
         </div>
       )}
 
-      {/* Lista de mensagens */}
       <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2">
         {displayed.length === 0 && (
           <p className="text-center text-sm text-slate-400 mt-8">
@@ -177,7 +175,7 @@ export default function ChatScreen({
                 {[0, 1, 2].map((i) => (
                   <span
                     key={i}
-                    className="w-2 h-2 rounded-full bg-orange-400 animate-bounce"
+                    className="w-2 h-2 rounded-full bg-yellow-400 animate-bounce"
                     style={{ animationDelay: `${i * 0.15}s` }}
                   />
                 ))}

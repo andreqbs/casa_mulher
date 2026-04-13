@@ -8,7 +8,7 @@ interface BreathScreenProps {
   onBack: () => void;
 }
 
-export default function BreathScreen({ onStart, onBack }: BreathScreenProps) {
+export default function BreathScreen({ onStart, onBack }: Readonly<BreathScreenProps>) {
   const [count, setCount] = React.useState(2);
 
   function handleCount(delta: number) {

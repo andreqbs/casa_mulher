@@ -1,12 +1,12 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Play, ChevronRight, Leaf, TriangleAlert, Angry, Flame, Siren } from 'lucide-react';
+import { Play, Leaf, TriangleAlert, Angry, Flame, Siren } from 'lucide-react';
 
 interface LearnMoreProps {
   onBack?: () => void;
+  onStartHere?: () => void;
 }
 
-export default function LearnMore({ onBack }: LearnMoreProps) {
+export default function LearnMore({ onBack, onStartHere }: Readonly<LearnMoreProps>) {
   return (
     <div className="px-6 py-4 space-y-8 animate-in fade-in duration-500 pb-24">
       <div className="space-y-4">
@@ -58,9 +58,9 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
       {/* Stages */}
       <div className="space-y-4">
         {/* Stage 1 */}
-        <div className="bg-yellow-50/50 rounded-[32px] p-6 border-l-4 border-yellow-400 space-y-3">
+        <div className="bg-green-50/50 rounded-[32px] p-6 border-l-4 border-green-400 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold text-sm">
+            <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-gree-600 font-bold text-sm">
               <TriangleAlert className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">1. Relação com sinais de alerta</h3>
@@ -70,9 +70,9 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        <div className="bg-brand-purple-light/30 rounded-[32px] p-6 border-l-4 border-brand-purple space-y-3">
+        <div className="bg-yellow-50/50 rounded-[32px] p-6 border-l-4 border-yellow-400 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple font-bold text-sm">
+            <div className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-orange-400 font-bold text-sm">
               <Angry className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">2. Relação Desgastante</h3>
@@ -82,9 +82,9 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        <div className="bg-green-50/50 rounded-[32px] p-6 border-l-4 border-green-500 space-y-3">
+        <div className="bg-red-50/50 rounded-[32px] p-6 border-l-4 border-brand-purple space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">
+            <div className="w-6 h-6 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple font-bold text-sm">
               <Flame className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">3. Relação Agressiva</h3>
@@ -94,9 +94,9 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
 
-        <div className="bg-orange-50/50 rounded-[32px] p-6 border-l-4 border-orange-400 space-y-3">
+        <div className="bg-red-50/50 rounded-[32px] p-6 border-l-4 border-red-400 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-sm">
+            <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold text-sm">
                 <Siren className="w-5 h-5" />
             </div>
             <h3 className="font-bold text-slate-900">4. Relação de Alto Risco</h3>
@@ -167,7 +167,6 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
         </div>
       </div>
 
-      {/* Footer CTA */}
       <div className="bg-gradient-to-br from-brand-purple to-[#7a659c] rounded-[32px] p-8 text-center space-y-6 shadow-lg relative overflow-hidden">
         <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
         <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-black/10 rounded-full blur-3xl" />
@@ -179,7 +178,8 @@ export default function LearnMore({ onBack }: LearnMoreProps) {
           </p>
         </div>
         
-        <button className="relative z-10 border-2 border-white/30 bg-white/10 text-white font-bold py-3 px-8 rounded-full text-sm hover:bg-white/20 transition-colors backdrop-blur-sm">
+        <button className="relative z-10 border-2 border-white/30 bg-white/10 text-white font-bold py-3 px-8
+        rounded-full text-sm hover:bg-white/20 transition-colors backdrop-blur-sm" onClick={onStartHere}>
           Começar por aqui
         </button>
       </div>

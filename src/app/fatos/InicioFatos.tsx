@@ -8,7 +8,7 @@ interface InicioFatosProps {
   onBack: () => void;
 }
 
-export default function InicioFatos({ onCriar, onHistorico, onBack }: InicioFatosProps) {
+export default function InicioFatos({ onCriar, onHistorico, onBack }: Readonly<InicioFatosProps>) {
   const [showModal, setShowModal] = useState(false);
   const [texto, setTexto] = useState('');
   const [erro, setErro] = useState('');

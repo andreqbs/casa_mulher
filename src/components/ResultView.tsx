@@ -8,7 +8,7 @@ interface ResultViewProps {
   onViewContacts: () => void;
 }
 
-export default function ResultView({ score, onReset, onViewContacts }: ResultViewProps) {
+export default function ResultView({ score, onReset, onViewContacts }: Readonly<ResultViewProps>) {
   let result = {
     title: "RELAÇÃO COM SINAIS DE ALERTA",
     shortTitle: "Relação Alerta",
@@ -91,7 +91,7 @@ export default function ResultView({ score, onReset, onViewContacts }: ResultVie
         <div className="grid grid-cols-2 gap-y-4 gap-x-2 px-2">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-green-500 shrink-0" />
-            <span className="text-[10px] font-bold text-slate-700">Relação Sinais de alerta</span>
+            <span className="text-[10px] font-bold text-slate-700">Relação Alerta</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-yellow-500 shrink-0" />

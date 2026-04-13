@@ -17,7 +17,7 @@ import CheckinView from './components/CheckinView';
 import FloraView from './components/FloraView';
 import ExperienciasView from './components/ExperienciasView';
 
-type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education' | 'learn-more' | 'breath' | 'checkin' | 'flora' | 'experiencias';
+type ViewState = 'home' | 'para-voce' | 'sos' | 'quiz' | 'result' | 'education' | 'learn-more' | 'breath' | 'checkin' | 'flora' | 'experiencias' | 'historico';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -31,9 +31,12 @@ export default function App() {
     setCurrentView(next);
   }
 
-  /** Botão Voltar do header: retorna à tela anterior salva. */
   function handleBack() {
     setCurrentView(prevView);
+  }
+
+  function handleParaVoce() {
+    setCurrentView('para-voce');
   }
 
   const handleTabChange = (tab: string) => {
@@ -87,7 +90,7 @@ export default function App() {
       case 'education':
         return <EducationView />;
       case 'learn-more':
-        return <LearnMore onBack={handleBack} />;
+        return <LearnMore onBack={handleBack} onStartHere={handleParaVoce} />;
       default:
         return <HomeView onStartQuiz={() => navigateTo('quiz')} onViewJuliana={() => navigateTo('education')} onLearnMore={() => navigateTo('learn-more')} />;
     }
