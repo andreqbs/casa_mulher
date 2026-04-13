@@ -102,8 +102,10 @@ export default function QuizView({ onComplete, onCancel }: QuizViewProps) {
   };
 
   return (
-    <div className="px-6 py-4 flex flex-col h-full animate-in fade-in duration-500">
-      <div className="space-y-6">
+    <div className="flex-1 flex flex-col min-h-0 animate-in fade-in duration-500">
+
+      {/* Área scrollável — pergunta e opções */}
+      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
         <div className="flex justify-between items-end">
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Questionário</span>
@@ -114,7 +116,7 @@ export default function QuizView({ onComplete, onCancel }: QuizViewProps) {
 
         {/* Progress Bar */}
         <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             className="h-full bg-brand-purple"
@@ -167,22 +169,22 @@ export default function QuizView({ onComplete, onCancel }: QuizViewProps) {
         </AnimatePresence>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="mt-auto pt-8 flex justify-between items-center">
-        <button 
+      {/* Botões de navegação — fora do scroll, sempre visíveis */}
+      <div className="flex-shrink-0 flex justify-between items-center px-6 py-4 bg-white border-t border-slate-100">
+        <button
           onClick={prevStep}
           className="flex items-center gap-2 text-slate-400 font-bold text-sm px-4 py-2"
         >
           <ChevronLeft className="w-4 h-4" /> Anterior
         </button>
 
-        <button 
+        <button
           onClick={nextStep}
           disabled={answers[currentStep] === undefined}
           className={`flex items-center gap-2 font-bold text-sm px-8 py-3 rounded-full shadow-lg transition-all ${
             answers[currentStep] !== undefined
-              ? currentStep === questions.length - 1 
-                ? "bg-green-600 text-white" 
+              ? currentStep === questions.length - 1
+                ? "bg-green-600 text-white"
                 : "bg-brand-purple text-white"
               : "bg-slate-100 text-slate-300 cursor-not-allowed"
           }`}

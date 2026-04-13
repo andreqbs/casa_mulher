@@ -18,28 +18,28 @@ export default function CareToolsView({ onNavigate }: CareToolsViewProps) {
   const tools: Tool[] = [
     {
       title: "Treinar",
-      desc: "Exercícios leves e alongamentos para liberar a tensão do corpo.",
+      desc: "Práticas rápidas para acalmar a mente e se sentir mais segura no momento",
       icon: <Dumbbell className="w-6 h-6 text-brand-purple" />,
       color: "bg-brand-purple-light/50",
       action: () => onNavigate?.('checkin'),
     },
     {
       title: "Acalmar",
-      desc: "Práticas de respiração e meditação para momentos de ansiedade.",
+      desc: "Respire com a gente e reduza a tensão em poucos minutos.",
       icon: <Wind className="w-6 h-6 text-green-600" />,
       color: "bg-brand-green/20",
       action: () => onNavigate?.('breath'),
     },
     {
       title: "Minhas Experiências",
-      desc: "Um espaço para revisitar sua jornada e reconhecer sua força.",
+      desc: "Escreva com orientação e perceba ciclos que você pode estar repetindo e caminhos possíveis para sair deles.",
       icon: <Sparkles className="w-6 h-6 text-orange-500" />,
       color: "bg-brand-yellow/20",
       action: () => onNavigate?.('experiencias'),
     },
     {
       title: "Diário",
-      desc: "Escreva livremente sobre seus sentimentos em um espaço seguro e privado.",
+      desc: "Veja seus registros e perceba, aos poucos o que está mudando dentro de você.",
       icon: <PenTool className="w-6 h-6 text-slate-600" />,
       color: "bg-slate-100",
       action: () => onNavigate?.('diario'),
@@ -82,7 +82,7 @@ export default function CareToolsView({ onNavigate }: CareToolsViewProps) {
       </div>
 
       <div className="text-center pt-8">
-        <p className="text-slate-400 text-[10px] italic">
+        <p className="text-slate-400 text-[16px] italic">
           “Você é a sua maior prioridade.”
         </p>
       </div>

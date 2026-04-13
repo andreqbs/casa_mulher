@@ -9,38 +9,37 @@ interface ResultViewProps {
 }
 
 export default function ResultView({ score, onReset, onViewContacts }: ResultViewProps) {
-  // Score mapping
   let result = {
-    title: "ZONA DE ALERTA",
-    shortTitle: "Zona de Alerta",
-    description: "Alguns comportamentos podem ser sinais iniciais. É importante ficar atenta e buscar informação.",
-    color: "text-yellow-500",
-    needleRotation: -50
+    title: "RELAÇÃO COM SINAIS DE ALERTA",
+    shortTitle: "Relação Alerta",
+    description: "Aqui, nem tudo parece errado. Mas algumas situações já chamam a sua atenção. Podem ser comentários que te incomodam, pequenas críticas, ciúmes ou momentos em que você sente que precisa se explicar mais do que gostaria. Ainda existe leveza, mas algo dentro de você já percebe que nem tudo está bem.",
+    color: "text-green-500",
+    needleRotation: -90
   };
 
   if (score >= 6 && score <= 12) {
     result = {
-      title: "ZONA DE RISCO (ESCALADA EMOCIONAL)",
-      shortTitle: "Zona de Risco",
-      description: "A relação já impacta sua autoestima e liberdade. A tendência é aumentar. Identificar esses sinais é o primeiro passo para retomar o controle da sua vida.",
-      color: "text-brand-purple",
+      title: "RELAÇÃO DESGASTANTE",
+      shortTitle: "Relação Desgastante",
+      description: "Nesse ponto, o que antes era pontual começa a se repetir. Você pode se sentir mais insegura, confusa ou \"pisando em ovos\". Talvez comece a evitar conflitos, se adaptar mais do que gostaria ou até duvidar de si mesma. A relação passa a ocupar mais energia do que deveria. E, aos poucos, você pode começar a se afastar de quem você era.",
+      color: "text-yellow-500",
       needleRotation: 0
     };
   } else if (score >= 13 && score <= 17) {
     result = {
-      title: "ZONA DE VIOLÊNCIA",
-      shortTitle: "Zona de Violência",
-      description: "Existem padrões claros de abuso. Sua segurança física e mental está em perigo. Busque apoio especializado imediatamente.",
-      color: "text-green-500",
-      needleRotation: 50
+      title: "RELAÇÃO AGRESSIVA",
+      shortTitle: "Relação Agressiva",
+      description: "Aqui, os limites já foram ultrapassados. As atitudes deixam de ser apenas desconfortáveis e passam a ferir — emocional ou fisicamente. Podem existir humilhações, ameaças, controle ou agressões. Mesmo assim, é comum que exista confusão: momentos bons misturados com momentos difíceis. Mas é importante reconhecer: isso já é violência.",
+      color: "text-brand-purple",
+      needleRotation: 70
     };
   } else if (score >= 18) {
     result = {
-      title: "ZONA CRÍTICA",
-      shortTitle: "Zona Crítica",
-      description: "Situação de alto risco. Sua vida pode estar em perigo iminente. Não hesite em buscar ajuda policial ou abrigo.",
-      color: "text-slate-800",
-      needleRotation: 80
+      title: "RELAÇÃO DE ALTO RISCO",
+      shortTitle: "Relação de Alto Risco",
+      description: "Neste estágio, a sua segurança pode estar em risco. O medo pode estar presente, seja pela reação da outra pessoa ou pela possibilidade de algo mais grave acontecer. Você pode sentir que não tem saída ou que precisa tomar muito cuidado com cada passo. Aqui, buscar ajuda não é só importante — é necessário.",
+      color: "text-red-500",
+      needleRotation: 120
     };
   }
 
@@ -56,20 +55,20 @@ export default function ResultView({ score, onReset, onViewContacts }: ResultVie
       {/* Main Result Card */}
       <div className="bg-brand-purple-light/50 rounded-[32px] p-6 space-y-8">
         
-        {/* Gauge Section */}
         <div className="flex flex-col items-center pt-4">
           <div className="relative w-48 h-24 overflow-visible flex justify-center">
-            {/* SVG Gauge */}
             <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible">
               {/* Background track */}
               <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" strokeWidth="24" strokeLinecap="round" />
               {/* Yellow: Left */}
-              <path d="M 20 100 A 80 80 0 0 1 60 30" fill="none" stroke="#eab308" strokeWidth="24" strokeLinecap="round" />
+              <path d="M 20 100 A 80 80 0 0 1 60 30" fill="none" stroke="#22c55e" strokeWidth="24" strokeLinecap="round" />
               {/* Purple: Middle */}
-              <path d="M 60 30 A 80 80 0 0 1 140 30" fill="none" stroke="#8b76ad" strokeWidth="24" />
+              <path d="M 60 30 A 80 80 0 0 1 140 30" fill="none" stroke="#eab308" strokeWidth="24" />
               {/* Green: Right */}
-              <path d="M 140 30 A 80 80 0 0 1 180 100" fill="none" stroke="#22c55e" strokeWidth="24" strokeLinecap="round" />
-              
+              <path d="M 140 30 A 80 80 0 0 1 180 100" fill="none" stroke="#8b76ad" strokeWidth="24" strokeLinecap="round" />
+              {/* Black: Right */}
+              <path d="M 178 80 A 80 80 0 0 1 180 100" fill="none" stroke="#FF0000" strokeWidth="24" strokeLinecap="round" />
+
               {/* Needle */}
               <motion.g 
                 initial={{ rotate: -90 }}
@@ -91,20 +90,20 @@ export default function ResultView({ score, onReset, onViewContacts }: ResultVie
         {/* Legend */}
         <div className="grid grid-cols-2 gap-y-4 gap-x-2 px-2">
           <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-green-500 shrink-0" />
+            <span className="text-[10px] font-bold text-slate-700">Relação Sinais de alerta</span>
+          </div>
+          <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-yellow-500 shrink-0" />
-            <span className="text-[10px] font-bold text-slate-700">Zona de Alerta</span>
+            <span className="text-[10px] font-bold text-slate-700">Relação Desgastante</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-brand-purple shrink-0" />
-            <span className="text-[10px] font-bold text-slate-700">Zona de Risco</span>
+            <span className="text-[10px] font-bold text-slate-700">Relação Agressiva</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-green-500 shrink-0" />
-            <span className="text-[10px] font-bold text-slate-700">Zona de Violência</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-slate-800 shrink-0" />
-            <span className="text-[10px] font-bold text-slate-700">Zona Crítica</span>
+            <div className="w-3 h-3 rounded-full bg-red-500 shrink-0" />
+            <span className="text-[10px] font-bold text-slate-700">Relação de Alto Risco</span>
           </div>
         </div>
 
