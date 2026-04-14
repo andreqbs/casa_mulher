@@ -19,7 +19,7 @@ const FLORA_THEME = {
 
 const GREETING: ChatMessage = {
     id: 'flora-greeting',
-    text: 'Olá! Sou a Flora 🌿\nEstou aqui para te ouvir com cuidado e sem julgamentos. Como você está se sentindo hoje?',
+    text: 'Olá! Sou a Flora \nEstou aqui para te ouvir com cuidado e sem julgamentos. Como você está se sentindo hoje?',
     userId: FLORA_USER_ID,
     createdAt: new Date().toISOString(),
 };
