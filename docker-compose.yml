@@ -4,8 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8086:80"
     restart: unless-stopped
     environment:
-      # Token da Flora API — injetado no nginx em runtime (nunca exposto no bundle JS)
       FLORA_API_TOKEN: ${FLORA_API_TOKEN}
