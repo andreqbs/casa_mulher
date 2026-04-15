@@ -8,3 +8,4 @@ services:
     restart: unless-stopped
     environment:
       FLORA_API_TOKEN: ${FLORA_API_TOKEN}
+      CHATKIT_OPENAI_API_KEY: ${CHATKIT_OPENAI_API_KEY}

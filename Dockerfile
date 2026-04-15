@@ -22,5 +22,5 @@ COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 EXPOSE 80
 
-# envsubst substitui apenas FLORA_API_TOKEN, preservando variáveis nativas do nginx ($uri, $http_origin, etc.)
-CMD ["/bin/sh", "-c", "envsubst '${FLORA_API_TOKEN}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+# envsubst substitui variáveis de ambiente, preservando variáveis nativas do nginx ($uri, $http_origin, etc.)
+CMD ["/bin/sh", "-c", "envsubst '${FLORA_API_TOKEN} ${CHATKIT_OPENAI_API_KEY}' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
