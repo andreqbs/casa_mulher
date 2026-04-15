@@ -12,3 +12,18 @@
     @apply font-display;
   }
 }
+
+/* ── ChatKit web-component overrides ── */
+openai-chatkit {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+/* Remove qualquer borda/sombra do iframe interno */
+openai-chatkit iframe {
+  border: none !important;
+  border-radius: 0 !important;
+}

@@ -2,7 +2,7 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import type {PersistStorage, StorageValue} from "zustand/middleware";
-import {sendMessageAPI} from "@/services/chat/conversationService";
+import {getChatService} from "@/services/chat/ChatServiceFactory";
 import {ChatMessage} from "@/components/chat/ChatScreen";
 
 const AI_ID = "flora-ai";
@@ -70,7 +70,8 @@ export const useConversationStore = create<ConversationState>()(
                 }));
 
                 try {
-                    const response = await sendMessageAPI({
+                    const chatService = getChatService();
+                    const response = await chatService.sendMessage({
                         message: text,
                         // userId: userId,
                         userId: "hooy-app-user",

@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import ChatScreen, {ChatMessage} from '@/src/components/chat/ChatScreen';
-import {sendMessageAPI} from '@/src/services/chat/conversationService';
+import {getChatService} from '@/src/services/chat/ChatServiceFactory';
 import {ChevronLeft} from "lucide-react";
 import girrafeImg from "@/src/assets/giraffe.png"
 
@@ -58,7 +58,8 @@ export default function FloraChat({onBack}: Readonly<FloraChatProps>) {
         setAiTyping(true);
 
         try {
-            const response = await sendMessageAPI({
+            const chatService = getChatService();
+            const response = await chatService.sendMessage({
                 message: text,
                 sessionId: sessionId.current,
                 userId: APP_USER_ID,
