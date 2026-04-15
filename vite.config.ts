@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       __CHATKIT_WORKFLOW_ID__: JSON.stringify(env.CHATKIT_WORKFLOW_ID || ''),
       __CHATKIT_MODEL__: JSON.stringify(env.CHATKIT_MODEL || 'gpt-4o-mini'),
       __CHATKIT_INSTRUCTIONS__: JSON.stringify(env.CHATKIT_INSTRUCTIONS || ''),
-      __CHATKIT_DEBUG__: JSON.stringify(env.CHATKIT_DEBUG === 'true'),
+      __API_PROVIDER_DEBUG__: JSON.stringify(env.DEFAULT_API_PROVIDER_DEBUG === 'true'),
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

@@ -3,6 +3,7 @@ import ChatScreen, {ChatMessage} from '@/src/components/chat/ChatScreen';
 import {getChatService} from '@/src/services/chat/ChatServiceFactory';
 import {ChevronLeft} from "lucide-react";
 import girrafeImg from "@/src/assets/giraffe.png"
+import {debug} from '@/src/utils/debugLogger';
 
 const FLORA_USER_ID = 'flora-ai';
 const APP_USER_ID = 'casa-mulher-web';
@@ -59,6 +60,7 @@ export default function FloraChat({onBack}: Readonly<FloraChatProps>) {
 
         try {
             const chatService = getChatService();
+            debug.log('Enviando mensagem:', text, '| sessionId:', sessionId.current);
             const response = await chatService.sendMessage({
                 message: text,
                 sessionId: sessionId.current,
@@ -67,6 +69,7 @@ export default function FloraChat({onBack}: Readonly<FloraChatProps>) {
             });
 
             if (response.text) {
+                debug.log('Resposta recebida:', response.text.slice(0, 100));
                 const floraMsg: ChatMessage = {
                     id: `flora-${Date.now()}`,
                     text: response.text,
@@ -75,7 +78,8 @@ export default function FloraChat({onBack}: Readonly<FloraChatProps>) {
                 };
                 setMessages(prev => [floraMsg, ...prev]);
             }
-        } catch {
+        } catch (e) {
+            debug.error('Erro ao enviar mensagem:', e);
             setMessages(prev => [
                 {
                     id: `err-${Date.now()}`,
