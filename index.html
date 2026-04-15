@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casa da Mulher Brasileira</title>
+    <!-- Polyfill: crypto.randomUUID não existe em contextos HTTP (não-seguro) -->
+    <script>
+      if (typeof crypto !== 'undefined' && typeof crypto.randomUUID !== 'function') {
+        crypto.randomUUID = function () {
+          return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, function (c) {
+            var r = crypto.getRandomValues(new Uint8Array(1))[0];
+            return (c ^ (r & (15 >> (c / 4)))).toString(16);
+          });
+        };
+      }
+    </script>
     <script
       src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
       async
