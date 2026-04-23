@@ -1,13 +1,14 @@
 import type { IChatService } from './IChatService';
 import { FloraConversationService } from './FloraConversationService';
 import { OpenAIConversationService } from './OpenAIConversationService';
+import { OpenAINativeChatService } from './OpenAINativeChatService';
 
 /** Singleton — evita criar múltiplas instâncias durante o ciclo de vida da app. */
 let instance: IChatService | null = null;
 
 /**
  * Retorna a implementação de IChatService correspondente ao provedor configurado
- * via DEFAULT_API_PROVIDER no .env ('flora' | 'chatkit').
+ * via DEFAULT_API_PROVIDER no .env ('flora' | 'chatkit' | 'openai-native').
  *
  * GRASP – Creator / Pure Fabrication:
  *   A factory centraliza a decisão de criação sem que os consumidores
@@ -22,6 +23,9 @@ export function getChatService(): IChatService {
   switch (__APP_CHAT_PROVIDER__) {
     case 'chatkit':
       instance = new OpenAIConversationService();
+      break;
+    case 'openai-native':
+      instance = new OpenAINativeChatService();
       break;
     case 'flora':
     default:

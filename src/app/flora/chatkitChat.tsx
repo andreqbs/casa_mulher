@@ -264,21 +264,38 @@ export default function ChatkitChat({onBack}: Readonly<ChatkitChatProps>) {
 
     return (
         <div className="flex flex-col flex-1 min-h-0">
-            {/* ChatKit oculto — motor de backend do Agent Builder */}
+            {/*
+             * ChatKit — motor de backend do Agent Builder (invisível ao usuário).
+             *
+             * IMPORTANTE — compatibilidade Chromium:
+             *   Chrome 108+ throttla iframes cross-origin que estejam:
+             *     1. Com opacity: 0 (computed), OU
+             *     2. Fora do viewport (ex: top: -9999px)
+             *   Quando throttled, timers, fetch e SSE ficam atrasados em até 1 min,
+             *   fazendo o ChatKit não responder. Firefox não implementa esse throttling.
+             *
+             *   Solução: container 1×1px em top:0/left:0 (dentro do viewport),
+             *   SEM opacity:0. O overflow:hidden clipa o ChatKit visualmente.
+             *   O elemento é tecnicamente "no viewport" → Chrome não throttla.
+             *   zIndex:-1 garante que fique atrás de toda a UI.
+             */}
             <div
                 aria-hidden="true"
                 style={{
                     position: 'fixed',
-                    top: '-9999px',
+                    top: 0,
                     left: 0,
-                    width: 400,
-                    height: 600,
-                    opacity: 0,
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden',
                     pointerEvents: 'none',
                     zIndex: -1,
                 }}
             >
-                <ChatKit control={chatkit.control} className="block h-full w-full"/>
+                <ChatKit
+                    control={chatkit.control}
+                    style={{display: 'block', width: '400px', height: '600px'}}
+                />
             </div>
 
             {/* Header personalizado Flora */}

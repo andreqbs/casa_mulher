@@ -15,12 +15,18 @@ export default defineConfig(({ mode }) => {
     define: {
       // Injetados em build-time — nenhum segredo é exposto no bundle.
       __APP_CHAT_PROVIDER__: JSON.stringify(
-        env.DEFAULT_API_PROVIDER === 'chatkit' ? 'chatkit' : 'flora',
+        ['chatkit', 'openai-native', 'flora'].includes(env.DEFAULT_API_PROVIDER)
+          ? env.DEFAULT_API_PROVIDER
+          : 'flora',
       ),
       __CHATKIT_WORKFLOW_ID__: JSON.stringify(env.CHATKIT_WORKFLOW_ID || ''),
       __CHATKIT_MODEL__: JSON.stringify(env.CHATKIT_MODEL || 'gpt-4o-mini'),
       __CHATKIT_INSTRUCTIONS__: JSON.stringify(env.CHATKIT_INSTRUCTIONS || ''),
       __API_PROVIDER_DEBUG__: JSON.stringify(env.DEFAULT_API_PROVIDER_DEBUG === 'true'),
+      // Provider openai-native — chama a Responses API diretamente via SSE.
+      // O comportamento do agente é definido via OPENAI_NATIVE_INSTRUCTIONS no .env.
+      __OPENAI_NATIVE_MODEL__: JSON.stringify(env.OPENAI_NATIVE_MODEL || env.CHATKIT_MODEL || 'gpt-4o'),
+      __OPENAI_NATIVE_INSTRUCTIONS__: JSON.stringify(env.OPENAI_NATIVE_INSTRUCTIONS || env.CHATKIT_INSTRUCTIONS || ''),
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
